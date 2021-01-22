@@ -57,4 +57,4 @@ jobs:
             }
           EOF
           )
-          curl -X POST --data-urlencode "$PAYLOAD"
+          curl -X POST --data-urlencode "$PAYLOAD" https://hooks.slack.com/services/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
