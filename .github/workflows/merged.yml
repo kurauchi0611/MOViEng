@@ -44,7 +44,7 @@ jobs:
         run: |
           PAYLOAD=$(cat << EOF
             payload={
-              'channel': '#hackers_bar',
+              'channel': '#kaihatsu',
               'username': 'MergedMain',
               'attachments': [{
                 'fallback': 'This is merged notion attachment.',
