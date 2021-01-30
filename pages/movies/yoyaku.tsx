@@ -87,10 +87,10 @@ export default function Home() {
         <Box>
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3019.0573600211624!2d140.7311008157251!3d40.82670373852665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f9b9f192daebddf%3A0x5c934a60b0ae37a2!2z6Z2S5qOu5biC5rCR44Ob44O844Or77yI44Oq44Oz44Kv44Oi44Ki5bmz5a6J6Zaj5biC5rCR44Ob44O844Or77yJ!5e0!3m2!1sja!2sjp!4v1611597305162!5m2!1sja!2sjp"
-            frameborder="0"
-            allowfullscreen=""
+            frameBorder="0"
+            allowFullScreen={false}
             aria-hidden="false"
-            tabindex="0"
+            tabIndex={0}
           ></iframe>
         </Box>
         <Button href="" variant="contained" color="primary" onClick={yoyaku}>
