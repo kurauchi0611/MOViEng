@@ -16,6 +16,8 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
 
+import NextLink from "next/link";
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -51,11 +53,11 @@ type Movie = {
   picture: String;
 };
 
-type Place ={
-  prefecture:String;
-  city:String;
-  other:String;
-}
+type Place = {
+  prefecture: String;
+  city: String;
+  other: String;
+};
 
 export default function Home() {
   const classes = useStyles();
@@ -143,93 +145,87 @@ export default function Home() {
           チェックしよう！
         </Typography>
       </Box>
-        {now &&
-           (
-            <Card className={classes.roota}>
-              <CardActionArea>
-                <CardMedia
-                  className={classes.media}
-                  image="/static/images/cards/contemplative-reptile.jpg"
-                  title=""
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    パラサイト
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    2021年1月26日15時40分
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-              <CardActions>
-                <Link
-                  href="movies/para"
-                  // onClick={preventDefault}
-                  variant="body2"
-                >
-                  詳細
-                </Link>
-              </CardActions>
-            </Card>
-          )
-          }
+      {now && (
+        <Card className={classes.roota}>
+          <CardActionArea>
+            <CardMedia
+              className={classes.media}
+              image="/static/images/cards/contemplative-reptile.jpg"
+              title=""
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                パラサイト
+              </Typography>
+              <Typography
+                variant="body2"
+                color="textSecondary"
+                component="p"
+              ></Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                2021年1月26日15時40分
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+          <CardActions>
+            <Link
+              href="movies/para"
+              // onClick={preventDefault}
+              variant="body2"
+            >
+              詳細
+            </Link>
+          </CardActions>
+        </Card>
+      )}
       <Container className={classes.content} maxWidth="lg">
         <Typography variant="caption" color="textSecondary">
           2020年12月・2021年1月上映予定作品
         </Typography>
         <Divider />
-        {movie.map((movi) => {
+        {movie.map((movi,index) => {
           return (
-            <Card className={classes.roota}>
-              <CardActionArea>
-                <CardMedia
-                  className={classes.media}
-                  image="/static/images/cards/contemplative-reptile.jpg"
-                  title=""
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    {movi.movie.title}
-                  </Typography>
-                  <Typography
+            <NextLink href="movies/para" passHref key={index}>
+              <Card className={classes.roota}>
+                <CardActionArea>
+                  <CardMedia
+                    className={classes.media}
+                    image="/static/images/cards/contemplative-reptile.jpg"
+                    title=""
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      {movi.movie.title}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      {movi.place.prefecture}
+                      {movi.place.city}
+                      {movi.place.other}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      2021年1月26日15時40分
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+                {/* <CardActions>
+                  <Link
+                    href="movies/para"
+                    // onClick={preventDefault}
                     variant="body2"
-                    color="textSecondary"
-                    component="p"
                   >
-                    {movi.place.prefecture}
-                    {movi.place.city}
-                    {movi.place.other}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    2021年1月26日15時40分
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-              <CardActions>
-                <Link
-                  href="movies/para"
-                  // onClick={preventDefault}
-                  variant="body2"
-                >
-                  詳細
-                </Link>
-              </CardActions>
-            </Card>
+                    詳細
+                  </Link>
+                </CardActions> */}
+              </Card>
+            </NextLink>
           );
         })}
         <Divider />
