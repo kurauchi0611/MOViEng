@@ -37,8 +37,6 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-
-
 type Schedule = {
   good: number;
   movie: Movie;
