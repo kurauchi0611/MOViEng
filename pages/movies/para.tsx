@@ -46,6 +46,12 @@ type Movie = {
   picture: String;
 };
 
+type Place ={
+  prefecture:String;
+  city:String;
+  other:String;
+}
+
 export default function Home() {
   const classes = useStyles();
   const preventDefault = (event: React.SyntheticEvent) =>
