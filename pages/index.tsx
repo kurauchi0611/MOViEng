@@ -36,11 +36,14 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   })
 );
+
+
+
 type Schedule = {
   good: number;
   movie: Movie;
   openTime: Object;
-  place: Object;
+  place: Place;
   startTime: Object;
   wantWatch: number;
 };
@@ -49,6 +52,12 @@ type Movie = {
   description: String;
   picture: String;
 };
+
+type Place ={
+  prefecture:String;
+  city:String;
+  other:String;
+}
 
 export default function Home() {
   const classes = useStyles();
@@ -82,7 +91,7 @@ export default function Home() {
   // React.useEffect(() => {
   //   const clump = () => {
   //     let getMovies = [];
-  //     db.collection("schedule").doc()
+  //     db.collection("yoyaku").doc()
   //       .get()
   //       .then((querySnapshot) => {
   //         querySnapshot.forEach(async (doc) => {
@@ -97,7 +106,7 @@ export default function Home() {
   React.useEffect(() => {
     const clump = () => {
       let getMovies = [];
-      db.collection("yoyaku")
+      db.collection("schedule")
         .get()
         .then((querySnapshot) => {
           querySnapshot.forEach(async (doc) => {
