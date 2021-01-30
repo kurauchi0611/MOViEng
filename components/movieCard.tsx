@@ -32,10 +32,10 @@ export default function MediaCard() {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            パラサイト
+            hoge
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            青森県　青森市　市民ホール
+            hoge県　hoge市　hoge
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             2021年1月26日15時40分

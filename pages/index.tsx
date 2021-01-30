@@ -54,6 +54,7 @@ export default function Home() {
   const classes = useStyles();
   const preventDefault = (event: React.SyntheticEvent) =>
     event.preventDefault();
+  const [now, setNow] = React.useState(true);
   const [movie, setMovies] = React.useState<Schedule[] | null>([
     {
       good: 0,
@@ -78,15 +79,30 @@ export default function Home() {
       },
     },
   ]);
+  // React.useEffect(() => {
+  //   const clump = () => {
+  //     let getMovies = [];
+  //     db.collection("schedule").doc()
+  //       .get()
+  //       .then((querySnapshot) => {
+  //         querySnapshot.forEach(async (doc) => {
+  //           const nowhantei = doc.data().now;
+  //           if (nowhantei) setNow(true);
+  //         });
+  //       });
+  //     console.log(getMovies);
+  //   };
+  //   clump();
+  // }, []);
   React.useEffect(() => {
-    const clump = async () => {
+    const clump = () => {
       let getMovies = [];
-      await db
-        .collection("schedule")
+      db.collection("yoyaku")
         .get()
         .then((querySnapshot) => {
           querySnapshot.forEach(async (doc) => {
             const movieDetail = await doc.data().movie.get();
+            console.log(movieDetail.data());
 
             const movieData = {
               id: doc.id,
@@ -95,12 +111,13 @@ export default function Home() {
               place: doc.data().place,
               startTime: doc.data().startTime,
               wantWatch: doc.data().wantWatch,
-              movie: movieDetail.data(),
+              movie: await movieDetail.data(),
             };
             getMovies.push(movieData);
             setMovies(getMovies);
           });
         });
+      console.log(getMovies);
     };
     clump();
   }, []);
@@ -112,13 +129,54 @@ export default function Home() {
           MOViEng
         </Typography>
       </Box>
-      <Box className={classes.roota}>
+      <Box className={classes.root}>
         <Typography component="p" variant="h6" className={classes.check}>
           会場と上映スケジュールを
           <br />
           チェックしよう！
         </Typography>
       </Box>
+        {now &&
+           (
+            <Card className={classes.roota}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.media}
+                  image="/static/images/cards/contemplative-reptile.jpg"
+                  title=""
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    パラサイト
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    2021年1月26日15時40分
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions>
+                <Link
+                  href="movies/para"
+                  // onClick={preventDefault}
+                  variant="body2"
+                >
+                  詳細
+                </Link>
+              </CardActions>
+            </Card>
+          )
+          }
       <Container className={classes.content} maxWidth="lg">
         <Typography variant="caption" color="textSecondary">
           2020年12月・2021年1月上映予定作品
@@ -126,7 +184,7 @@ export default function Home() {
         <Divider />
         {movie.map((movi) => {
           return (
-            <Card className={classes.root}>
+            <Card className={classes.roota}>
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
@@ -142,7 +200,9 @@ export default function Home() {
                     color="textSecondary"
                     component="p"
                   >
-                    青森県　青森市　市民ホール
+                    {movi.place.prefecture}
+                    {movi.place.city}
+                    {movi.place.other}
                   </Typography>
                   <Typography
                     variant="body2"
@@ -165,6 +225,18 @@ export default function Home() {
             </Card>
           );
         })}
+        <Divider />
+        <MovieCard />
+        <Divider />
+        <MovieCard />
+        <Divider />
+        <MovieCard />
+        <Divider />
+        <MovieCard />
+        <Divider />
+        <MovieCard />
+        <Divider />
+        <MovieCard />
       </Container>
     </React.Fragment>
   );

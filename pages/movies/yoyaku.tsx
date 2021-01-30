@@ -7,6 +7,9 @@ import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";
 import MovieCard from "../../components/movieCard";
 import Button from "@material-ui/core/Button";
+import { db } from "../../firebase/firebase";
+
+import { useRouter } from 'next/router'
 
 import PanToolIcon from "@material-ui/icons/PanTool";
 import FavoriteIcon from "@material-ui/icons/Favorite";
@@ -46,11 +49,21 @@ type Movie = {
 };
 
 export default function Home() {
+  const router=useRouter()
   const classes = useStyles();
   const preventDefault = (event: React.SyntheticEvent) =>
     event.preventDefault();
   const [movie, setMovies] = React.useState<Schedule[] | null>(null);
   React.useEffect(() => {}, []);
+  const yoyaku=()=>{
+    db.collection("yoyaku").doc().set({
+      user:"hoge",
+
+    }).then(()=>{
+      console.log("yoyaku kanryo!!");
+      router.push("/movies/kanryo")
+    })
+  }
   return (
     <React.Fragment>
       <CssBaseline />
@@ -80,7 +93,7 @@ export default function Home() {
             tabindex="0"
           ></iframe>
         </Box>
-        <Button href="/movies/yoyaku" variant="contained" color="primary">
+        <Button href="" variant="contained" color="primary" onClick={yoyaku}>
           予約を確定する
         </Button>
       </Container>
