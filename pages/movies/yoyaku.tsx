@@ -73,6 +73,9 @@ export default function Home() {
         </Typography>
       </Box>
 
+
+
+
       <Container className={classes.content} maxWidth="lg">
         <Box>
           <Typography>作品</Typography>
