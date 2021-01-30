@@ -36,7 +36,7 @@ type Schedule = {
   good: number;
   movie: Movie;
   openTime: Object;
-  place: Object;
+  place: Place;
   startTime: Object;
   wantWatch: number;
 };
