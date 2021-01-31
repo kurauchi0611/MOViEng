@@ -5,8 +5,9 @@ import { IconType } from "../../../consts/IconConsts";
 
 const IconContainer = styled.div`
   position: absolute;
+  top: 50%;
   left: 16px;
-  top: 8px;
+  transform: translateY(-50%);
 `;
 
 const ButtonContainer = styled.button<{
