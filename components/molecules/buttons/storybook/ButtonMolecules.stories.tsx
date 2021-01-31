@@ -10,7 +10,7 @@ import {
 import { IconType } from "../../../../consts/IconConsts";
 
 export default {
-  title: "ButtonMolecules",
+  title: "Button",
   component: ButtonMolecules,
   decorators: [withKnobs],
 };
@@ -35,7 +35,6 @@ export const showButtonMolecules = () => (
     width={number("Width", 384)}
     disabled={boolean("Disabled", false)}
     textColor={text("TextColor", "#fff")}
-    isSmall={boolean("IsSmall", false)}
     iconType={select("Icon", iconList, undefined)}
   />
 );

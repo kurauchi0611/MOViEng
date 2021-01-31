@@ -25,14 +25,14 @@ const ButtonContainer = styled.button<{
   position: relative;
   transition: all 150ms linear;
 
-  background: #fff;
-  border: solid 1px #b0b0b0;
+  border: none;
+  background: ${({ btnColor }) => btnColor};
 
   ${({ btnColor }) =>
-    btnColor !== undefined &&
+    !btnColor &&
     css`
-      border: none;
-      background: ${({ btnColor }) => btnColor};
+      background: #fff;
+      border: solid 1px #b0b0b0;
     `}
   ${({ disabled }) =>
     !disabled &&
@@ -50,10 +50,9 @@ const ButtonContainer = styled.button<{
 export type Props = {
   text: string;
   btnColor?: string;
-  width?: number;
+  width: number;
   disabled?: boolean;
   textColor: string;
-  isSmall?: boolean;
   iconType?: IconType;
   onClick?: () => void;
 };
@@ -63,7 +62,6 @@ const ButtonMolecules = ({
   textColor,
   btnColor,
   width,
-  isSmall = false,
   disabled = false,
   iconType,
   onClick,
@@ -81,7 +79,7 @@ const ButtonMolecules = ({
           <IconContainer>
             <IconAtoms
               iconType={iconType}
-              size={isSmall ? 16 : 24}
+              size={24}
               color={disabled ? "#fff" : textColor}
             />
           </IconContainer>
