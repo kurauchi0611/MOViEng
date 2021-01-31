@@ -54,7 +54,7 @@ export type Props = {
   disabled?: boolean;
   textColor: string;
   iconType?: IconType;
-  onClick?: () => void;
+  onClick: () => void;
 };
 
 const ButtonMolecules = ({
