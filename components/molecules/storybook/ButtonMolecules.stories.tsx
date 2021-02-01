@@ -10,6 +10,7 @@ import {
 } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 import { IconType } from "../../../consts/IconConsts";
+import GeneralColorStyle from "../../../styles/colors/GeneralColorStyle";
 
 export default {
   title: "Components/Molecules/Button",
@@ -30,36 +31,24 @@ const iconList = {
   PEN: IconType.PEN,
 };
 
-export const showButtonMolecules = () => {
-  const [checked, setChecked] = useState(false);
-  const handleCheckboxClick = useMemo(() => {
-    return (e) => {
-      setChecked(!checked);
-    };
-  }, [checked]);
-
-  return (
-    <>
-      <ButtonMolecules
-        text={text("Text", "テキスト")}
-        btnColor={!checked ? color("BtnColor", "#fee101") : undefined}
-        width={number("Width", 384)}
-        disabled={boolean("Disabled", false)}
-        textColor={color("TextColor", "#000")}
-        iconType={select("Icon", iconList, undefined)}
-        onClick={action("onClick")}
-      />
-
-      <div style={{ marginTop: "8px" }}>
-        <label>
-          <input
-            type="checkbox"
-            checked={checked}
-            onChange={handleCheckboxClick}
-          />
-          ボーダーボタン
-        </label>
-      </div>
-    </>
-  );
+const styleList = {
+  NONE: undefined,
+  Yellow: GeneralColorStyle.Yellow,
+  Red: GeneralColorStyle.Red,
+  Twitter: GeneralColorStyle.Twitter,
+  Green: GeneralColorStyle.Green,
 };
+
+export const showButtonMolecules = () => (
+  <>
+    <ButtonMolecules
+      text={text("Text", "テキスト")}
+      btnColor={select("BtnColor", styleList, undefined)}
+      width={number("Width", 384)}
+      disabled={boolean("Disabled", false)}
+      textColor={color("TextColor", GeneralColorStyle.Black)}
+      iconType={select("Icon", iconList, undefined)}
+      onClick={action("onClick")}
+    />
+  </>
+);

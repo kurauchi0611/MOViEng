@@ -2,6 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 import IconAtoms from "../../atoms/IconAtoms";
 import { IconType } from "../../../consts/IconConsts";
+import GeneralColorStyle from "../../../styles/colors/GeneralColorStyle";
 
 const IconContainer = styled.div`
   position: absolute;
@@ -31,15 +32,15 @@ const ButtonContainer = styled.button<{
   ${({ btnColor }) =>
     !btnColor &&
     css`
-      background: #fff;
-      border: solid 1px #b0b0b0;
+      background: ${GeneralColorStyle.White};
+      border: solid 1px ${GeneralColorStyle.Grey};
     `}
   ${({ disabled }) =>
     !disabled &&
     css`
       cursor: pointer;
       &:hover {
-        box-shadow: #999 0px 1px 4px;
+        box-shadow: ${GeneralColorStyle.Grey} 0px 1px 4px;
       }
     `}
     &:focus {
@@ -69,8 +70,8 @@ const ButtonMolecules = ({
   return (
     <>
       <ButtonContainer
-        btnColor={disabled ? "#c1c1c1" : btnColor}
-        textColor={disabled ? "#fff" : textColor}
+        btnColor={disabled ? GeneralColorStyle.Disabled : btnColor}
+        textColor={disabled ? GeneralColorStyle.White : textColor}
         width={width}
         onClick={onClick}
         disabled={disabled}
@@ -80,7 +81,7 @@ const ButtonMolecules = ({
             <IconAtoms
               iconType={iconType}
               size={24}
-              color={disabled ? "#fff" : textColor}
+              color={disabled ? GeneralColorStyle.White : textColor}
             />
           </IconContainer>
         )}
