@@ -46,11 +46,11 @@ type Movie = {
   picture: String;
 };
 
-type Place ={
-  prefecture:String;
-  city:String;
-  other:String;
-}
+type Place = {
+  prefecture: String;
+  city: String;
+  other: String;
+};
 
 export default function Home() {
   const classes = useStyles();
@@ -99,7 +99,11 @@ export default function Home() {
             <Typography>開場：15時00分</Typography>
             <Typography>開演：15時40分</Typography>
             <Typography>会場</Typography>
-            <Typography>{movie.place.prefecture}{movie.place.city}{movie.place.other}</Typography>
+            <Typography>
+              {movie.place.prefecture}
+              {movie.place.city}
+              {movie.place.other}
+            </Typography>
           </Box>
           <Box>
             <Typography>
@@ -115,11 +119,9 @@ export default function Home() {
           </Box>
           <Box>
             <Typography>あらすじ</Typography>
-            <Typography>
-             {movie.movie.description}
-            </Typography>
+            <Typography>{movie.movie.description}</Typography>
           </Box>
-          <Button href="/movies/kanryo" variant="contained" color="primary">
+          <Button href="/movies/yoyaku" variant="contained" color="primary">
             予約する
           </Button>
         </Container>
