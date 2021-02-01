@@ -8,7 +8,7 @@ import { withKnobs, select, color } from "@storybook/addon-knobs";
 import GeneralColorStyle from "../../colors/GeneralColorStyle";
 
 export default {
-  title: "Styles/Text/GeneralText",
+  title: "Styles/Text",
   component: GeneralText,
   decorators: [withKnobs],
 };
