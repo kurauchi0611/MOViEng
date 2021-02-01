@@ -8,4 +8,12 @@ export enum IconType {
   WITHDRAWAL,
   BACK,
   PEN,
+  HOME_BLACK,
+  HOME_WHITE,
+  LIST_BLACK,
+  LIST_WHITE,
+  PIN_BLACK,
+  PIN_WHITE,
+  USER_BLACK,
+  USER_WHITE,
 }

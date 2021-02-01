@@ -19,9 +19,17 @@ const iconList = {
   WITHDRAWAL: IconType.WITHDRAWAL,
   BACK: IconType.BACK,
   PEN: IconType.PEN,
+  HOME_WHITE: IconType.HOME_WHITE,
+  HOME_BLACK: IconType.HOME_BLACK,
+  LIST_WHITE: IconType.LIST_WHITE,
+  LIST_BLACK: IconType.LIST_BLACK,
+  PIN_WHITE: IconType.PIN_WHITE,
+  PIN_BLACK: IconType.PIN_BLACK,
+  USER_WHITE: IconType.USER_WHITE,
+  USER_BLACK: IconType.USER_BLACK,
 };
 
-export const showButtonMolecules = () => (
+export const showIconAtoms = () => (
   <IconAtoms
     size={number("Width", 24)}
     color={color("Color", "#000")}
