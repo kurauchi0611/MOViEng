@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React from "react";
 import ButtonMolecules from "../buttons/ButtonMolecules";
 import {
   withKnobs,
@@ -40,15 +40,13 @@ const styleList = {
 };
 
 export const showButtonMolecules = () => (
-  <>
-    <ButtonMolecules
-      text={text("Text", "テキスト")}
-      btnColor={select("BtnColor", styleList, undefined)}
-      width={number("Width", 384)}
-      disabled={boolean("Disabled", false)}
-      textColor={color("TextColor", GeneralColorStyle.Black)}
-      iconType={select("Icon", iconList, undefined)}
-      onClick={action("onClick")}
-    />
-  </>
+  <ButtonMolecules
+    text={text("Text", "テキスト")}
+    btnColor={select("BtnColor", styleList, undefined)}
+    width={number("Width", 384)}
+    disabled={boolean("Disabled", false)}
+    textColor={color("TextColor", GeneralColorStyle.Black)}
+    iconType={select("Icon", iconList, undefined)}
+    onClick={action("onClick")}
+  />
 );
