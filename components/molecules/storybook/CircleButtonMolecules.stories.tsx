@@ -3,6 +3,7 @@ import { withKnobs, number, select, color } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 import { IconType } from "../../../consts/IconConsts";
 import CircleButtonMolecules from "../buttons/CircleButtonMolecules";
+import GeneralColorStyle from "../../../styles/colors/GeneralColorStyle";
 
 export default {
   title: "Components/Molecules/Button",
@@ -24,9 +25,9 @@ const iconList = {
 
 export const showCircleButtonMolecules = () => (
   <CircleButtonMolecules
-    btnColor={color("BtnColor", "#fee101")}
+    btnColor={color("BtnColor", GeneralColorStyle.Yellow)}
     size={number("Width", 68)}
-    iconColor={color("TextColor", "#000")}
+    iconColor={color("TextColor", GeneralColorStyle.Black)}
     iconType={select("Icon", iconList, 0)}
     onClick={action("onClick")}
   />

@@ -1,7 +1,6 @@
 import React, { ReactNode } from "react";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
 import styled, { css } from "styled-components";
+import GeneralColorStyle from "../../styles/colors/GeneralColorStyle";
 
 const CardContainer = styled.div<{
   width: number;
@@ -13,7 +12,7 @@ const CardContainer = styled.div<{
   ${({ raised }) =>
     raised &&
     css`
-      box-shadow: #a6a6a6 0px 2px 4px;
+      box-shadow: ${GeneralColorStyle.Grey} 0px 2px 4px;
     `}
 `;
 

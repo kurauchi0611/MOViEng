@@ -1,6 +1,7 @@
 import React, { ChangeEvent } from "react";
 import TextField from "@material-ui/core/TextField";
 import styled from "styled-components";
+import GeneralColorStyle from '../../styles/colors/GeneralColorStyle'
 
 const Label = styled.p`
   margin: 0;
@@ -10,8 +11,8 @@ const Label = styled.p`
 
 const MandatoryContainer = styled.p`
   margin: 0;
-  background: #eb5757;
-  color: #ffffff;
+  background: ${GeneralColorStyle.Mandatory};
+  color: ${GeneralColorStyle.White};
   font-size: 12px;
   padding: 1px 8px 1px 8px;
   border-radius: 2px;

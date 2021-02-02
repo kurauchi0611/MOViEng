@@ -2,6 +2,8 @@ import React from "react";
 import IconButton from "@material-ui/core/IconButton";
 import IconAtoms from "../../atoms/IconAtoms";
 import { IconType } from "../../../consts/IconConsts";
+import GeneralColorStyle from "../../../styles/colors/GeneralColorStyle";
+import ColorUtil from "../../../utils/color/ColorUtil";
 
 export type Props = {
   size: number;
@@ -24,7 +26,10 @@ const CircleButtonMolecules = ({
         background: btnColor,
         width: size,
         height: size,
-        boxShadow: "rgba(0, 0, 0, 0.25) 0px 0px 2px",
+        boxShadow: `${ColorUtil.addOpacity(
+          GeneralColorStyle.Black,
+          0.25
+        )} 0px 0px 2px`,
       }}
       onClick={onClick}
     >

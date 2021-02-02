@@ -2,6 +2,7 @@ import React from "react";
 import { withKnobs, number, select, color } from "@storybook/addon-knobs";
 import { IconType } from "../../../consts/IconConsts";
 import IconAtoms from "../IconAtoms";
+import GeneralColorStyle from "../../../styles/colors/GeneralColorStyle";
 
 export default {
   title: "Components/Atoms/Icon",
@@ -32,7 +33,7 @@ const iconList = {
 export const showIconAtoms = () => (
   <IconAtoms
     size={number("Width", 24)}
-    color={color("Color", "#000")}
+    color={color("Color", GeneralColorStyle.Black)}
     iconType={select("Icon", iconList, 0)}
   />
 );
