@@ -1,8 +1,8 @@
 import React from "react";
-import {
-  GeneralText,
+import GeneralText, {
   GeneralFontSize,
   GeneralFontWeight,
+  GeneralTag,
 } from "../GeneralTextStyle";
 import { withKnobs, select, color } from "@storybook/addon-knobs";
 import GeneralColorStyle from "../../colors/GeneralColorStyle";
@@ -35,11 +35,24 @@ const fontWeightList = {
   BLACK: GeneralFontWeight.BLACK,
 };
 
+const tagList = {
+  H1: GeneralTag.H1,
+  H2: GeneralTag.H2,
+  H3: GeneralTag.H3,
+  H4: GeneralTag.H4,
+  H5: GeneralTag.H5,
+  H6: GeneralTag.H6,
+  P: GeneralTag.P,
+  SMALL: GeneralTag.SMALL,
+  SPAN: GeneralTag.SPAN,
+};
+
 export const showStyleText = () => (
   <GeneralText
     fontSize={select("FontSize", fontSizeList, GeneralFontSize.SIZE_10)}
     fontWeight={select("FontWeight", fontWeightList, GeneralFontWeight.NORMAL)}
     fontColor={color("FontColor", GeneralColorStyle.Black)}
+    tag={select("Tag", tagList, GeneralTag.P)}
   >
     テキスト
   </GeneralText>

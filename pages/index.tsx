@@ -17,7 +17,7 @@ import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
 
 import NextLink from "next/link";
-
+import { GeneralDirection, GeneralFlex } from "../styles/flex/GeneralFlexStyle";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -184,7 +184,7 @@ export default function Home() {
           2020年12月・2021年1月上映予定作品
         </Typography>
         <Divider />
-        {movie.map((movi,index) => {
+        {movie.map((movi, index) => {
           return (
             <NextLink href="movies/para" passHref key={index}>
               <Card className={classes.roota}>

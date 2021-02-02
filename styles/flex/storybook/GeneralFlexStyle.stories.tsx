@@ -8,8 +8,7 @@ import {
 } from "../GeneralFlexStyle";
 import { withKnobs, select } from "@storybook/addon-knobs";
 import CardAtoms from "../../../components/atoms/CardAtoms";
-import {
-  GeneralText,
+import GeneralText, {
   GeneralFontSize,
 } from "../../typography/GeneralTextStyle";
 import styled from "styled-components";

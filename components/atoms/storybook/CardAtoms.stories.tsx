@@ -1,11 +1,9 @@
 import React from "react";
 import { withKnobs, number, boolean } from "@storybook/addon-knobs";
 import CardAtoms from "../CardAtoms";
-import {
-  GeneralText,
+import GeneralText, {
   GeneralFontSize,
   GeneralFontWeight,
-  GeneralTextParagraph,
 } from "../../../styles/typography/GeneralTextStyle";
 
 export default {
@@ -23,8 +21,8 @@ export const showCardAtoms = () => (
       タイトル
     </GeneralText>
 
-    <GeneralTextParagraph fontSize={GeneralFontSize.SIZE_16}>
+    <GeneralText fontSize={GeneralFontSize.SIZE_16}>
       テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
-    </GeneralTextParagraph>
+    </GeneralText>
   </CardAtoms>
 );
