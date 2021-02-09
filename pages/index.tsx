@@ -6,7 +6,7 @@ import Container from "@material-ui/core/Container";
 import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";
 import MovieCard from "../components/movieCard";
-import { db } from "../firebase/firebase";
+import { db } from "utils/firebase/firebase";
 
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -17,7 +17,7 @@ import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
 
 import NextLink from "next/link";
-import { GeneralDirection, GeneralFlex } from "../styles/flex/GeneralFlexStyle";
+import { GeneralFlex } from "styles/flex/GeneralFlexStyle";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -36,6 +36,9 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     media: {
       height: 140,
+    },
+    head: {
+      fontSize: 100,
     },
   })
 );
@@ -138,7 +141,7 @@ export default function Home() {
         <Typography component="h1" variant="h4">
           MOViEng
         </Typography>
-        <h1>unkoo</h1>
+        <h1 className={classes.head}>unkoo</h1>
       </Box>
       <Box className={classes.root}>
         <Typography component="p" variant="h6" className={classes.check}>
@@ -147,6 +150,9 @@ export default function Home() {
           チェックしよう！
         </Typography>
       </Box>
+      <GeneralFlex>
+        <p>aaaaaa</p>
+      </GeneralFlex>
       {now && (
         <Card className={classes.roota}>
           <CardActionArea>

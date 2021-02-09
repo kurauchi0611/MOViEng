@@ -7,7 +7,7 @@ import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";
 import MovieCard from "../../components/movieCard";
 import Button from "@material-ui/core/Button";
-import { db } from "../../firebase/firebase";
+import { db } from "utils/firebase/firebase";
 
 import { useRouter } from 'next/router'
 
