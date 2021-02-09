@@ -8,7 +8,7 @@ import Divider from "@material-ui/core/Divider";
 import MovieCard from "../components/movieCard";
 import TextField from "@material-ui/core/TextField";
 
-import { db } from "utils/firebase/firebase";
+import firebase, { db } from "utils/firebase/firebase";
 import { tmdbKey } from "utils/tmdb";
 import { IconType } from "../consts/IconConsts";
 import GeneralColorStyle from "../styles/colors/GeneralColorStyle";
@@ -99,7 +99,7 @@ export default function Home() {
         setMovieData({
           title: data.title,
           description: data.overview,
-          image: data.poster_path,
+          image: `https://image.tmdb.org/t/p/w300${data.poster_path}`,
         });
       });
   };
@@ -122,7 +122,19 @@ export default function Home() {
   const addSchedule = () => {
     console.log(startTime);
     console.log(place);
-    
+    const transTime = new Date(startTime);
+    const openTime = transTime.setMinutes(transTime.getMinutes() - 30);
+    console.log(transTime);
+    console.log(openTime);
+
+    db.collection("schedule").add({
+      movie: movieData,
+      place: place,
+      openTime: firebase.firestore.Timestamp.fromDate(new Date(openTime)),
+      startTime: firebase.firestore.Timestamp.fromDate(new Date(startTime)),
+      good: 0,
+      wantWatch: 0,
+    });
   };
   return (
     <React.Fragment>
@@ -150,49 +162,56 @@ export default function Home() {
           <GeneralText fontSize={28} fontWeight={"bold"}>
             {movieData.title}
           </GeneralText>
-          <img
-            src={`https://image.tmdb.org/t/p/w300${movieData.image}`}
-            alt=""
-          />
+          <img src={movieData.image} alt="" />
         </GeneralFlex>
         <GeneralText fontSize={20}>{movieData.description}</GeneralText>
-        <TextField
-          id="datetime-local"
-          label="開始日時"
-          type="datetime-local"
-          defaultValue="2021-02-10T15:30"
-          className={classes.textField}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          onChange={changeStartTime}
-        />
-        <TextFieldAtoms
-          placeholder="東京都"
-          label="都道府県"
-          value={place.prefecture}
-          changeValue={changePrefecture}
-        />
-        <TextFieldAtoms
-          placeholder="新宿区"
-          label="市区町村"
-          value={place.city}
-          changeValue={changeCity}
-        />
-        <TextFieldAtoms
-          placeholder="コクーンタワー"
-          label="他"
-          value={place.other}
-          changeValue={changePlaceOther}
-        />
-        <ButtonMolecules
-          text="スケジュール登録"
-          textColor={GeneralColorStyle.White}
-          btnColor={GeneralColorStyle.Twitter}
-          width={200}
-          iconType={IconType.MAN}
-          onClick={addSchedule}
-        />
+        <GeneralFlex direction="row" alignItems="flex-end" justify="center">
+          <TextField
+            id="datetime-local"
+            label="開始日時"
+            type="datetime-local"
+            defaultValue="2021-02-10T15:30"
+            className={classes.textField}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={changeStartTime}
+          />
+          <Box>
+            <TextFieldAtoms
+              placeholder="東京都"
+              label="都道府県"
+              value={place.prefecture}
+              changeValue={changePrefecture}
+            />
+          </Box>
+          <Box>
+            <TextFieldAtoms
+              placeholder="新宿区"
+              label="市区町村"
+              value={place.city}
+              changeValue={changeCity}
+            />
+          </Box>
+          <Box>
+            <TextFieldAtoms
+              placeholder="コクーンタワー"
+              label="他"
+              value={place.other}
+              changeValue={changePlaceOther}
+            />
+          </Box>
+          <Box>
+            <ButtonMolecules
+              text="スケジュール登録"
+              textColor={GeneralColorStyle.White}
+              btnColor={GeneralColorStyle.Twitter}
+              width={200}
+              iconType={IconType.MAN}
+              onClick={addSchedule}
+            />
+          </Box>
+        </GeneralFlex>
       </Container>
     </React.Fragment>
   );
