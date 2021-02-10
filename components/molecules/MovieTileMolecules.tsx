@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import GeneralColorStyle from "../../styles/colors/GeneralColorStyle";
+import GeneralColorStyle from "styles/colors/GeneralColorStyle";
 import GeneralText, {
   GeneralFontSize,
   GeneralFontWeight,
   GeneralTag,
-} from "../../styles/typography/GeneralTextStyle";
+} from "styles/typography/GeneralTextStyle";
 
 const MovieTileContainer = styled.div`
   width: 50vw;
