@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from "react";
 import TextField from "@material-ui/core/TextField";
 import styled from "styled-components";
-import GeneralColorStyle from '../../styles/colors/GeneralColorStyle'
+import GeneralColorStyle from "../../styles/colors/GeneralColorStyle";
 
 const Label = styled.p`
   margin: 0;
@@ -45,7 +45,7 @@ const TextFieldAtoms = ({
   isMandatory = false,
 }: Props) => {
   return (
-    <>
+    <div>
       <LabelWrap>
         {label !== undefined && <Label>{label}</Label>}
         {isMandatory && <MandatoryContainer>必須</MandatoryContainer>}
@@ -58,7 +58,7 @@ const TextFieldAtoms = ({
         value={value}
         onChange={(event) => changeValue(event)}
       />
-    </>
+    </div>
   );
 };
 
