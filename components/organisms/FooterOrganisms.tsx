@@ -65,7 +65,7 @@ const FooterOrganisms = () => {
               : IconType.USER_WHITE
           }
           text={"マイページ"}
-          onClick={() => screenTransition("/my_page")}
+          onClick={() => screenTransition("/my_page/id")}
         />
       </GeneralFlex>
     </FooterContainer>

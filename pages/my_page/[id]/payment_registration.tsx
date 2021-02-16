@@ -2,6 +2,7 @@ import TextFieldAtoms from "../../../components/atoms/TextFieldAtoms";
 import ButtonMolecules from "../../../components/molecules/buttons/ButtonMolecules";
 import GeneralColorStyle from "styles/colors/GeneralColorStyle";
 import styled from "styled-components";
+import { useState, ChangeEvent } from "react";
 import {
   GeneralAlignItems,
   GeneralDirection,
@@ -14,6 +15,10 @@ const Wrap = styled.div`
 `;
 
 const PaymentRegistration = () => {
+  const [cardNumber, setCardNumber] = useState("");
+  const [expirationDate, setExpirationDate] = useState("");
+  const [ccv, setCCV] = useState("");
+
   return (
     <>
       <TextFieldAtoms
@@ -21,6 +26,10 @@ const PaymentRegistration = () => {
         label={"カード番号"}
         width={360}
         isMandatory={true}
+        value={cardNumber}
+        changeValue={(event: ChangeEvent<HTMLInputElement>) =>
+          setCardNumber(event.target.value)
+        }
       />
       <Wrap>
         <GeneralFlex
@@ -33,12 +42,20 @@ const PaymentRegistration = () => {
             label={"有効期限"}
             width={160}
             isMandatory={true}
+            value={expirationDate}
+            changeValue={(event: ChangeEvent<HTMLInputElement>) =>
+              setExpirationDate(event.target.value)
+            }
           />
           <TextFieldAtoms
             placeholder={""}
             label={"CCV"}
             width={160}
             isMandatory={true}
+            value={ccv}
+            changeValue={(event: ChangeEvent<HTMLInputElement>) =>
+              setCCV(event.target.value)
+            }
           />
         </GeneralFlex>
       </Wrap>
