@@ -7,6 +7,7 @@ const CardContainer = styled.div<{
   raised: boolean;
 }>`
   padding: 14px 18px;
+  border-radius: 2px;
   width: ${({ width }) => width}px;
 
   ${({ raised }) =>
