@@ -21,11 +21,12 @@ export type Props = {
   width: number;
   raised?: boolean;
   children: ReactNode;
+  onClick: () => void;
 };
 
-const CardAtoms = ({ width, raised = false, children }: Props) => {
+const CardAtoms = ({ width, raised = false, children, onClick }: Props) => {
   return (
-    <CardContainer width={width} raised={raised}>
+    <CardContainer width={width} raised={raised} onClick={onClick}>
       {children}
     </CardContainer>
   );

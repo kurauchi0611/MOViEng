@@ -18,6 +18,12 @@ import Link from "@material-ui/core/Link";
 
 import NextLink from "next/link";
 import { GeneralFlex } from "styles/flex/GeneralFlexStyle";
+import GeneralColorStyle from "styles/colors/GeneralColorStyle";
+import CardAtoms from "../components/atoms/CardAtoms";
+import MovieCardMolecules from "../components/molecules/MovieCardMolecules";
+import GeneralText, {
+  GeneralFontSize,
+} from "../styles/typography/GeneralTextStyle";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -46,10 +52,11 @@ const useStyles = makeStyles((theme: Theme) =>
 type Schedule = {
   good: number;
   movie: Movie;
-  openTime: Object;
+  openTime: any;
   place: Place;
-  startTime: Object;
+  startTime: any;
   wantWatch: number;
+  id: string;
 };
 type Movie = {
   title: String;
@@ -68,54 +75,18 @@ export default function Home() {
   const preventDefault = (event: React.SyntheticEvent) =>
     event.preventDefault();
   const [now, setNow] = React.useState(true);
-  const [movie, setMovies] = React.useState<Schedule[] | null>([
-    {
-      good: 0,
-      openTime: {
-        sec: 0,
-        milSec: 0,
-      },
-      startTime: {
-        sec: 0,
-        milSec: 0,
-      },
-      place: {
-        city: "新宿区",
-        other: "コクーンタワー",
-        prefecture: "青森県",
-      },
-      wantWatch: 0,
-      movie: {
-        title: "HAL東京",
-        picture: "hogehoge",
-        description: "とっても面白い映画",
-      },
-    },
-  ]);
-  // React.useEffect(() => {
-  //   const clump = () => {
-  //     let getMovies = [];
-  //     db.collection("yoyaku").doc()
-  //       .get()
-  //       .then((querySnapshot) => {
-  //         querySnapshot.forEach(async (doc) => {
-  //           const nowhantei = doc.data().now;
-  //           if (nowhantei) setNow(true);
-  //         });
-  //       });
-  //     console.log(getMovies);
-  //   };
-  //   clump();
-  // }, []);
+  const [movies, setMovies] = React.useState<Schedule[] | null>([]);
+
   React.useEffect(() => {
-    const clump = async() => {
+    const clump = async () => {
       let getMovies = [];
-      await db.collection("schedule")
+      await db
+        .collection("schedule")
         .get()
         .then((querySnapshot) => {
           querySnapshot.forEach(async (doc) => {
             console.log(doc.data());
-            getMovies.push({...doc.data(),id:doc.id});
+            getMovies.push({ ...doc.data(), id: doc.id });
           });
           setMovies(getMovies);
         });
@@ -123,6 +94,7 @@ export default function Home() {
     };
     clump();
   }, []);
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -130,7 +102,6 @@ export default function Home() {
         <Typography component="h1" variant="h4">
           MOViEng
         </Typography>
-        <h1 className={classes.head}>unkoo</h1>
       </Box>
       <Box className={classes.root}>
         <Typography component="p" variant="h6" className={classes.check}>
@@ -139,90 +110,31 @@ export default function Home() {
           チェックしよう！
         </Typography>
       </Box>
-      <GeneralFlex>
-        <p>aaaaaa</p>
-      </GeneralFlex>
-      {now && (
-        <Card className={classes.roota}>
-          <CardActionArea>
-            <CardMedia
-              className={classes.media}
-              image="/static/images/cards/contemplative-reptile.jpg"
-              title=""
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
-                パラサイト
-              </Typography>
-              <Typography
-                variant="body2"
-                color="textSecondary"
-                component="p"
-              ></Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-                2021年1月26日15時40分
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-          <CardActions>
-            <Link
-              href="movies/para"
-              // onClick={preventDefault}
-              variant="body2"
-            >
-              詳細
-            </Link>
-          </CardActions>
-        </Card>
-      )}
+
       <Container className={classes.content} maxWidth="lg">
-        <Typography variant="caption" color="textSecondary">
+        <GeneralText fontSize={GeneralFontSize.SIZE_16} fontColor={"#BDBDBD"}>
           2020年12月・2021年1月上映予定作品
-        </Typography>
-        <Divider />
-        {movie.map((movi, index) => {
+        </GeneralText>
+
+        <hr style={{ margin: 0 }} />
+
+        {movies.map((movie, index) => {
           return (
-            <NextLink href={`movies/schedule/${movi.id}`} passHref key={index}>
-              <Card className={classes.roota}>
-                <CardActionArea>
-                  <CardMedia
-                    className={classes.media}
-                    image="/static/images/cards/contemplative-reptile.jpg"
-                    title=""
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {movi.movie.title}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="p"
-                    >
-                      {movi.place.prefecture}
-                      {movi.place.city}
-                      {movi.place.other}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="p"
-                    >
-                      2021年1月26日15時40分
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-                {/* <CardActions>
-                  <Link
-                    href="movies/para"
-                    // onClick={preventDefault}
-                    variant="body2"
-                  >
-                    詳細
-                  </Link>
-                </CardActions> */}
-              </Card>
-            </NextLink>
+            <>
+              <MovieCardMolecules
+                key={index}
+                city={movie.place.city}
+                other={movie.place.other}
+                prefecture={movie.place.prefecture}
+                picture={movie.movie.picture}
+                title={movie.movie.title}
+                movieId={movie.id}
+                startTime={movie.startTime.toDate()}
+                good={movie.good}
+                wantWatch={movie.wantWatch}
+              />
+              <hr style={{ margin: 0 }} />
+            </>
           );
         })}
       </Container>
