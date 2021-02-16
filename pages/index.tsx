@@ -108,27 +108,16 @@ export default function Home() {
   //   clump();
   // }, []);
   React.useEffect(() => {
-    const clump = () => {
+    const clump = async() => {
       let getMovies = [];
-      db.collection("schedule")
+      await db.collection("schedule")
         .get()
         .then((querySnapshot) => {
           querySnapshot.forEach(async (doc) => {
-            const movieDetail = await doc.data().movie.get();
-            console.log(movieDetail.data());
-
-            const movieData = {
-              id: doc.id,
-              good: doc.data().good,
-              openTime: doc.data().openTime,
-              place: doc.data().place,
-              startTime: doc.data().startTime,
-              wantWatch: doc.data().wantWatch,
-              movie: await movieDetail.data(),
-            };
-            getMovies.push(movieData);
-            setMovies(getMovies);
+            console.log(doc.data());
+            getMovies.push({...doc.data(),id:doc.id});
           });
+          setMovies(getMovies);
         });
       console.log(getMovies);
     };
@@ -193,7 +182,7 @@ export default function Home() {
         <Divider />
         {movie.map((movi, index) => {
           return (
-            <NextLink href="movies/para" passHref key={index}>
+            <NextLink href={`movies/schedule/${movi.id}`} passHref key={index}>
               <Card className={classes.roota}>
                 <CardActionArea>
                   <CardMedia
@@ -236,18 +225,6 @@ export default function Home() {
             </NextLink>
           );
         })}
-        <Divider />
-        <MovieCard />
-        <Divider />
-        <MovieCard />
-        <Divider />
-        <MovieCard />
-        <Divider />
-        <MovieCard />
-        <Divider />
-        <MovieCard />
-        <Divider />
-        <MovieCard />
       </Container>
     </React.Fragment>
   );
