@@ -8,6 +8,7 @@ const GeneralColorStyle = {
   Green: "#01c4a6",
   Disabled: "#c1c1c1",
   Grey: "#bdbdbd",
+  Tile: "#eee",
 };
 
 export default GeneralColorStyle;
