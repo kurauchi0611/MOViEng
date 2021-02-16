@@ -18,7 +18,11 @@ const FooterContainer = styled.div`
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.15);
 `;
 
-const FooterOrganisms = () => {
+export type Props = {
+  isLogin;
+};
+
+const FooterOrganisms = ({ isLogin }: Props) => {
   const router = useRouter();
   const [pathname, setPathname] = useState("");
 
@@ -58,15 +62,28 @@ const FooterOrganisms = () => {
           text={"上映会場"}
           onClick={() => screenTransition("/screening_venue")}
         />
-        <FooterButtonMolecules
-          iconType={
-            pathname.includes("/my_page")
-              ? IconType.USER_BLACK
-              : IconType.USER_WHITE
-          }
-          text={"マイページ"}
-          onClick={() => screenTransition("/my_page/id")}
-        />
+        {isLogin && (
+          <FooterButtonMolecules
+            iconType={
+              pathname.includes("/my_page")
+                ? IconType.USER_BLACK
+                : IconType.USER_WHITE
+            }
+            text={"マイページ"}
+            onClick={() => screenTransition("/my_page/id")}
+          />
+        )}
+        {!isLogin && (
+          <FooterButtonMolecules
+            iconType={
+              pathname.includes("/login")
+                ? IconType.USER_BLACK
+                : IconType.USER_WHITE
+            }
+            text={"ログイン"}
+            onClick={() => screenTransition("/login")}
+          />
+        )}
       </GeneralFlex>
     </FooterContainer>
   );
