@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Head from "next/head";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../src/theme";
 import "../src/reset.css";
+import { auth } from "../utils/firebase/firebase";
 import FooterOrganisms from "../components/organisms/FooterOrganisms";
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
+
+  const [isLogin, setIsLogin] = useState(false);
 
   React.useEffect(() => {
     // Remove the server-side injected CSS.
@@ -16,6 +19,16 @@ export default function MyApp(props) {
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
+
+    auth.onAuthStateChanged(function (user) {
+      if (user) {
+        // User is signed in.
+        setIsLogin(true);
+      } else {
+        // No user is signed in.
+        setIsLogin(false);
+      }
+    });
   }, []);
 
   return (
@@ -31,7 +44,7 @@ export default function MyApp(props) {
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
         <Component {...pageProps} />
-        <FooterOrganisms />
+        <FooterOrganisms isLogin={isLogin} />
       </ThemeProvider>
     </React.Fragment>
   );
