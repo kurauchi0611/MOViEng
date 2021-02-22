@@ -69,7 +69,7 @@ export const showStyleFlex = () => {
 
   for (let i in data) {
     list.push(
-      <CardAtoms width={300} raised={true}>
+      <CardAtoms width={300} raised={true} onClick={() => console.log("hoge")}>
         <GeneralText fontSize={GeneralFontSize.SIZE_24}>
           {`カード${data[i].text}`}
         </GeneralText>
