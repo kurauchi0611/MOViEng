@@ -13,7 +13,11 @@ export default {
 };
 
 export const showCardAtoms = () => (
-  <CardAtoms width={number("Width", 400)} raised={boolean("Raised", false)}>
+  <CardAtoms
+    width={number("Width", 400)}
+    raised={boolean("Raised", false)}
+    onClick={() => console.log("hoge")}
+  >
     <GeneralText
       fontSize={GeneralFontSize.SIZE_24}
       fontWeight={GeneralFontWeight.BOLD}
