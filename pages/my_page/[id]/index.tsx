@@ -37,7 +37,7 @@ const MyPage = () => {
       >
         チケット
       </GeneralText>
-      <CardAtoms width={376} raised={true}>
+      <CardAtoms width={376} raised={true} onClick={() => console.log("hoge")}>
         <GeneralFlex
           direction={GeneralDirection.ROW}
           justify={GeneralJustify.SPACE_BETWEEN}
