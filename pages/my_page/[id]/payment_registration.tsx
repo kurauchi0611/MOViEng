@@ -47,7 +47,7 @@ const PaymentRegistration = () => {
             changeValue={(event: ChangeEvent<HTMLInputElement>) =>
               setExpirationDate(event.target.value)
             }
-        type={"text"}
+            type={"text"}
           />
           <TextFieldAtoms
             placeholder={""}
