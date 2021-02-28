@@ -1,14 +1,16 @@
 import React, { ReactNode } from "react";
 import styled, { css } from "styled-components";
 import GeneralColorStyle from "../../styles/colors/GeneralColorStyle";
+import useMedia from "use-media";
 
 const CardContainer = styled.div<{
-  width: number;
+  width: number | string;
   raised: boolean;
 }>`
   padding: 14px 18px;
   border-radius: 2px;
   width: ${({ width }) => width}px;
+  width: ${({ width }) => width === "100%" && "100%"};
 
   ${({ raised }) =>
     raised &&
@@ -25,8 +27,14 @@ export type Props = {
 };
 
 const CardAtoms = ({ width, raised = false, children, onClick }: Props) => {
+  const isWide = useMedia({ minWidth: 500 });
+
   return (
-    <CardContainer width={width} raised={raised} onClick={onClick}>
+    <CardContainer
+      width={isWide ? "100%" : width}
+      raised={raised}
+      onClick={onClick}
+    >
       {children}
     </CardContainer>
   );

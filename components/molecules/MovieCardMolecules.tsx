@@ -8,6 +8,18 @@ import GeneralText, {
 import { format } from "date-fns";
 import ja from "date-fns/locale/ja";
 import { useRouter } from "next/router";
+import {
+  GeneralJustify,
+  GeneralAlignItems,
+} from "../../styles/flex/GeneralFlexStyle";
+import { GeneralSpacer } from "../../styles/spacer/GeneralSpacerStyle";
+import {
+  GeneralFlex,
+  GeneralDirection,
+} from "../../styles/flex/GeneralFlexStyle";
+import useMedia from "use-media";
+import { IconType } from "../../consts/IconConsts";
+import IconAtoms from "../atoms/IconAtoms";
 
 export type Props = {
   movieId: String;
@@ -29,31 +41,72 @@ const MovieCardMolecules = ({
   other,
   prefecture,
   startTime,
+  good,
+  wantWatch,
 }: Props) => {
   const router = useRouter();
+
+  const isWide = useMedia({ minWidth: 500 });
 
   const moveMovieInfo = (movieId: String) => {
     router.push(`/movieInfo/${movieId}`);
   };
 
   return (
-    <CardAtoms width={360} onClick={() => moveMovieInfo(movieId)}>
-      <ImageAtoms width={100} src={picture as string} />
-
-      <GeneralText
-        fontSize={GeneralFontSize.SIZE_16}
-        fontColor={GeneralColorStyle.Black}
+    <CardAtoms width={352} onClick={() => moveMovieInfo(movieId)}>
+      <GeneralFlex
+        direction={GeneralDirection.ROW}
+        justify={GeneralJustify.SPACE_AROUND}
       >
-        {title}
-      </GeneralText>
+        <ImageAtoms width={100} src={picture as string} />
 
-      <GeneralText fontSize={GeneralFontSize.SIZE_16} fontColor={"#7B7B7B"}>
-        {`${prefecture}・${city} ${other}`}
-      </GeneralText>
+        {!isWide && <GeneralSpacer horizontal={8} />}
 
-      <GeneralText fontSize={GeneralFontSize.SIZE_16} fontColor={"#7B7B7B"}>
-        {format(startTime, "yyyy年MM月Do日 dddd", { locale: ja })}
-      </GeneralText>
+        <div>
+          <GeneralText
+            fontSize={GeneralFontSize.SIZE_16}
+            fontColor={GeneralColorStyle.Black}
+          >
+            {title}
+          </GeneralText>
+
+          <GeneralText fontSize={GeneralFontSize.SIZE_16} fontColor={"#7B7B7B"}>
+            {`${prefecture}・${city} ${other}`}
+          </GeneralText>
+
+          <GeneralText fontSize={GeneralFontSize.SIZE_16} fontColor={"#7B7B7B"}>
+            {format(startTime, "yyyy年MM月Do日 dddd", { locale: ja })}
+          </GeneralText>
+
+          <GeneralFlex direction={GeneralDirection.ROW}>
+            <GeneralFlex direction={GeneralDirection.ROW}>
+              <IconAtoms
+                iconType={IconType.MAN}
+                size={16}
+                color={GeneralColorStyle.Grey}
+              />
+
+              <GeneralSpacer horizontal={4} />
+
+              {String(wantWatch)}
+            </GeneralFlex>
+
+            <GeneralSpacer horizontal={12} />
+
+            <GeneralFlex direction={GeneralDirection.ROW}>
+              <IconAtoms
+                iconType={IconType.HEART}
+                size={16}
+                color={GeneralColorStyle.Grey}
+              />
+
+              <GeneralSpacer horizontal={4} />
+
+              {String(good)}
+            </GeneralFlex>
+          </GeneralFlex>
+        </div>
+      </GeneralFlex>
     </CardAtoms>
   );
 };

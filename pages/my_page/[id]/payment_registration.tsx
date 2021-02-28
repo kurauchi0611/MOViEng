@@ -30,6 +30,7 @@ const PaymentRegistration = () => {
         changeValue={(event: ChangeEvent<HTMLInputElement>) =>
           setCardNumber(event.target.value)
         }
+        type={"text"}
       />
       <Wrap>
         <GeneralFlex
@@ -46,6 +47,7 @@ const PaymentRegistration = () => {
             changeValue={(event: ChangeEvent<HTMLInputElement>) =>
               setExpirationDate(event.target.value)
             }
+        type={"text"}
           />
           <TextFieldAtoms
             placeholder={""}
@@ -56,6 +58,7 @@ const PaymentRegistration = () => {
             changeValue={(event: ChangeEvent<HTMLInputElement>) =>
               setCCV(event.target.value)
             }
+            type={"password"}
           />
         </GeneralFlex>
       </Wrap>

@@ -5,14 +5,17 @@ import GeneralColorStyle from "styles/colors/GeneralColorStyle";
 import { ChangeEvent, useState } from "react";
 import { auth, db } from "../utils/firebase/firebase";
 import { GeneralSpacer } from "../styles/spacer/GeneralSpacerStyle";
+import LogoAtoms from "../components/atoms/LogoAtoms";
 import {
   GeneralAlignItems,
   GeneralDirection,
   GeneralFlex,
   GeneralJustify,
 } from "../styles/flex/GeneralFlexStyle";
+import { useRouter } from "next/router";
 
 const RegistAccount = () => {
+  const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,7 +29,11 @@ const RegistAccount = () => {
 
         await db.collection("users").doc(uid).set({
           name,
+          good: 0,
+          wantWatch: 0,
         });
+
+        router.replace("/");
       })
       .catch((error) => {
         var errorCode = error.code;
@@ -42,6 +49,12 @@ const RegistAccount = () => {
         justify={GeneralJustify.CENTER}
         alignItems={GeneralAlignItems.CENTER}
       >
+        <GeneralSpacer vertical={40} />
+
+        <LogoAtoms size={200} />
+
+        <GeneralSpacer vertical={20} />
+
         <TextFieldAtoms
           placeholder={"例) ムービー太郎"}
           label={"ニックネーム"}
@@ -51,6 +64,7 @@ const RegistAccount = () => {
           changeValue={(event: ChangeEvent<HTMLInputElement>) =>
             setName(event.target.value)
           }
+          type={"text"}
         />
 
         <GeneralSpacer vertical={20} />
@@ -64,6 +78,7 @@ const RegistAccount = () => {
           changeValue={(event: ChangeEvent<HTMLInputElement>) =>
             setEmail(event.target.value)
           }
+          type={"text"}
         />
 
         <GeneralSpacer vertical={20} />
@@ -77,6 +92,7 @@ const RegistAccount = () => {
           changeValue={(event: ChangeEvent<HTMLInputElement>) =>
             setPassword(event.target.value)
           }
+          type={"password"}
         />
 
         <GeneralSpacer vertical={20} />
@@ -90,6 +106,7 @@ const RegistAccount = () => {
           changeValue={(event: ChangeEvent<HTMLInputElement>) =>
             setCheckPassword(event.target.value)
           }
+          type={"password"}
         />
 
         <GeneralSpacer vertical={40} />

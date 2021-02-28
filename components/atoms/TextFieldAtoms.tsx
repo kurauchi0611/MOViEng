@@ -34,6 +34,7 @@ export type Props = {
   changeValue: (
     event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ) => void;
+  type: string;
 };
 
 const TextFieldAtoms = ({
@@ -43,6 +44,7 @@ const TextFieldAtoms = ({
   value,
   changeValue,
   isMandatory = false,
+  type,
 }: Props) => {
   return (
     <div>
@@ -57,6 +59,7 @@ const TextFieldAtoms = ({
         variant="outlined"
         value={value}
         onChange={(event) => changeValue(event)}
+        type={type}
       />
     </div>
   );

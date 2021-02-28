@@ -21,6 +21,8 @@ import { GeneralFlex } from "styles/flex/GeneralFlexStyle";
 import GeneralColorStyle from "styles/colors/GeneralColorStyle";
 import CardAtoms from "../components/atoms/CardAtoms";
 import MovieCardMolecules from "../components/molecules/MovieCardMolecules";
+import LogoAtoms from "../components/atoms/LogoAtoms";
+import { auth } from "../utils/firebase/firebase";
 import GeneralText, {
   GeneralFontSize,
 } from "../styles/typography/GeneralTextStyle";
@@ -61,7 +63,7 @@ type Schedule = {
 type Movie = {
   title: String;
   description: String;
-  picture: String;
+  image: String;
 };
 
 type Place = {
@@ -99,9 +101,7 @@ export default function Home() {
     <React.Fragment>
       <CssBaseline />
       <Box>
-        <Typography component="h1" variant="h4">
-          MOViEng
-        </Typography>
+        <LogoAtoms size={200} />
       </Box>
       <Box className={classes.root}>
         <Typography component="p" variant="h6" className={classes.check}>
@@ -126,7 +126,7 @@ export default function Home() {
                 city={movie.place.city}
                 other={movie.place.other}
                 prefecture={movie.place.prefecture}
-                picture={movie.movie.picture}
+                picture={movie.movie.image}
                 title={movie.movie.title}
                 movieId={movie.id}
                 startTime={movie.startTime.toDate()}

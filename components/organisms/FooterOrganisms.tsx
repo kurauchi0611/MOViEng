@@ -19,10 +19,11 @@ const FooterContainer = styled.div`
 `;
 
 export type Props = {
-  isLogin;
+  isLogin: boolean;
+  userId: string;
 };
 
-const FooterOrganisms = ({ isLogin }: Props) => {
+const FooterOrganisms = ({ isLogin, userId }: Props) => {
   const router = useRouter();
   const [pathname, setPathname] = useState("");
 
@@ -70,7 +71,7 @@ const FooterOrganisms = ({ isLogin }: Props) => {
                 : IconType.USER_WHITE
             }
             text={"マイページ"}
-            onClick={() => screenTransition("/my_page/id")}
+            onClick={() => screenTransition(`/my_page/${userId}`)}
           />
         )}
         {!isLogin && (

@@ -30,6 +30,7 @@ export const showTextFieldAtoms = () => {
         changeStoryText(event);
         action("onChange")(event.target.value);
       }}
+      type={text("type", "")}
     />
   );
 };

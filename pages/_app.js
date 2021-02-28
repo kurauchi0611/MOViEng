@@ -17,6 +17,7 @@ export default function MyApp(props) {
   const { Component, pageProps } = props;
 
   const [isLogin, setIsLogin] = useState(false);
+  const [userId, setUserId] = React.useState("");
 
   React.useEffect(() => {
     // Remove the server-side injected CSS.
@@ -29,9 +30,11 @@ export default function MyApp(props) {
       if (user) {
         // User is signed in.
         setIsLogin(true);
+        setUserId(user.uid);
       } else {
         // No user is signed in.
         setIsLogin(false);
+        setUserId("");
       }
     });
   }, []);
@@ -50,7 +53,7 @@ export default function MyApp(props) {
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
           <CssBaseline />
           <Component {...pageProps} />
-          <FooterOrganisms isLogin={isLogin} />
+          <FooterOrganisms isLogin={isLogin} userId={userId} />
         </ThemeProvider>
       </AppContainer>
     </React.Fragment>

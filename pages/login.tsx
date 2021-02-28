@@ -12,6 +12,7 @@ import GeneralText, {
 import { useRouter } from "next/router";
 import { auth } from "../utils/firebase/firebase";
 import { GeneralSpacer } from "../styles/spacer/GeneralSpacerStyle";
+import LogoAtoms from "../components/atoms/LogoAtoms";
 import {
   GeneralAlignItems,
   GeneralDirection,
@@ -53,11 +54,18 @@ const Login = () => {
         justify={GeneralJustify.CENTER}
         alignItems={GeneralAlignItems.CENTER}
       >
+        <GeneralSpacer vertical={40} />
+
+        <LogoAtoms size={200} />
+
+        <GeneralSpacer vertical={20} />
+
         <TextFieldAtoms
           placeholder={"メールアドレス"}
           value={email}
           width={360}
           changeValue={changeEmail}
+          type={"text"}
         />
 
         <GeneralSpacer vertical={12} />
@@ -67,6 +75,7 @@ const Login = () => {
           value={password}
           width={360}
           changeValue={changePassword}
+          type={"password"}
         />
         <GeneralSpacer vertical={52} />
       </GeneralFlex>
@@ -95,7 +104,7 @@ const Login = () => {
           onClick={() => console.log("ログイン")}
           iconType={IconType.TWITTER}
         />
-        <GeneralSpacer vertical={80} />
+        <GeneralSpacer vertical={60} />
       </GeneralFlex>
       <hr />
 
@@ -104,7 +113,7 @@ const Login = () => {
         justify={GeneralJustify.CENTER}
         alignItems={GeneralAlignItems.CENTER}
       >
-        <GeneralSpacer vertical={60} />
+        <GeneralSpacer vertical={40} />
         <GeneralText
           fontSize={GeneralFontSize.SIZE_16}
           fontColor={"#4f4f4f"}
