@@ -24,6 +24,7 @@ const MyPage = () => {
   const [userName, setUserName] = useState("");
   const [good, setGood] = useState(0);
   const [wantWatch, setWantWatch] = useState(0);
+  const [resavation, setResavation] = useState([]);
 
   useEffect(() => {
     if (!userId) return;
@@ -34,10 +35,28 @@ const MyPage = () => {
       setUserName(userData.name);
       setGood(userData.good);
       setWantWatch(userData.wantWatch);
+
+      let getMovies = [];
+      await db
+        .collection("users")
+        .doc(userId)
+        .collection("reservation")
+        .get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach(async (doc) => {
+            console.log(doc.data());
+            getMovies.push({ ...doc.data(), id: doc.id });
+          });
+          setResavation(getMovies);
+        });
     };
 
     getUser();
   }, [userId]);
+
+  const insetClagit = (id) => {
+    router.push(`/my_page/${userId}/payment_registration?movie=${id}`);
+  }
 
   return (
     <>
@@ -95,35 +114,39 @@ const MyPage = () => {
         チケット
       </GeneralText>
 
-      <CardAtoms width={376} raised={true} onClick={() => console.log("hoge")}>
-        <GeneralFlex
-          direction={GeneralDirection.ROW}
-          justify={GeneralJustify.SPACE_BETWEEN}
-          alignItems={GeneralAlignItems.CENTER}
-        >
-          <GeneralText
-            fontSize={GeneralFontSize.SIZE_16}
-            fontColor={GeneralColorStyle.Black}
-            fontWeight={GeneralFontWeight.BOLD}
-          >
-            パラサイト
-          </GeneralText>
+      {resavation.map((movie, index) => {
+        return (
+          <CardAtoms width={376} raised={true} onClick={() => insetClagit(movie.id)}>
+            <GeneralFlex
+              direction={GeneralDirection.ROW}
+              justify={GeneralJustify.SPACE_BETWEEN}
+              alignItems={GeneralAlignItems.CENTER}
+            >
+              <GeneralText
+                fontSize={GeneralFontSize.SIZE_16}
+                fontColor={GeneralColorStyle.Black}
+                fontWeight={GeneralFontWeight.BOLD}
+              >
+                {movie.movie.title}
+              </GeneralText>
 
-          <GeneralText
-            fontSize={GeneralFontSize.SIZE_20}
-            fontColor={GeneralColorStyle.Black}
-          >
-            18:20
-          </GeneralText>
-        </GeneralFlex>
+              <GeneralText
+                fontSize={GeneralFontSize.SIZE_20}
+                fontColor={GeneralColorStyle.Black}
+              >
+                18:20
+              </GeneralText>
+            </GeneralFlex>
 
-        <GeneralText fontSize={GeneralFontSize.SIZE_12} fontColor={`#666`}>
-          青森・青森市民ホール
-        </GeneralText>
-        <GeneralText fontSize={GeneralFontSize.SIZE_12} fontColor={`#666`}>
-          2020年12月19日（土）
-        </GeneralText>
-      </CardAtoms>
+            <GeneralText fontSize={GeneralFontSize.SIZE_12} fontColor={`#666`}>
+              青森・青森市民ホール
+            </GeneralText>
+            <GeneralText fontSize={GeneralFontSize.SIZE_12} fontColor={`#666`}>
+              2020年12月19日（土）
+            </GeneralText>
+          </CardAtoms>
+        );
+      })}
 
       <GeneralFlex direction={GeneralDirection.ROW}>
         <IconAtoms

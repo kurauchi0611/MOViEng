@@ -80,8 +80,8 @@ export default function Home() {
   const [movies, setMovies] = React.useState<Schedule[] | null>([]);
 
   React.useEffect(() => {
-    const clump = async () => {
-      let getMovies = [];
+                      const clump = async () => {
+                        let getMovies = [];
       await db
         .collection("schedule")
         .get()

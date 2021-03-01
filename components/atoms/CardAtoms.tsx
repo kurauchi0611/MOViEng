@@ -23,7 +23,7 @@ export type Props = {
   width: number;
   raised?: boolean;
   children: ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 const CardAtoms = ({ width, raised = false, children, onClick }: Props) => {
