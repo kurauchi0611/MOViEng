@@ -8,6 +8,7 @@ import GeneralText, {
 import { format } from "date-fns";
 import ja from "date-fns/locale/ja";
 import { useRouter } from "next/router";
+import { GeneralDirection, GeneralFlex } from "styles/flex/GeneralFlexStyle";
 
 export type Props = {
   movieId: String;
@@ -38,22 +39,25 @@ const MovieCardMolecules = ({
 
   return (
     <CardAtoms width={360} onClick={() => moveMovieInfo(movieId)}>
-      <ImageAtoms width={100} src={picture as string} />
+      <GeneralFlex direction={GeneralDirection.ROW}>
+        <ImageAtoms width={100} src={picture as string} />
+        <div style={{paddingLeft:"16px",}}>
+          <GeneralText
+            fontSize={GeneralFontSize.SIZE_16}
+            fontColor={GeneralColorStyle.Black}
+          >
+            {title}
+          </GeneralText>
 
-      <GeneralText
-        fontSize={GeneralFontSize.SIZE_16}
-        fontColor={GeneralColorStyle.Black}
-      >
-        {title}
-      </GeneralText>
+          <GeneralText fontSize={GeneralFontSize.SIZE_16} fontColor={"#7B7B7B"}>
+            {`${prefecture}・${city} ${other}`}
+          </GeneralText>
 
-      <GeneralText fontSize={GeneralFontSize.SIZE_16} fontColor={"#7B7B7B"}>
-        {`${prefecture}・${city} ${other}`}
-      </GeneralText>
-
-      <GeneralText fontSize={GeneralFontSize.SIZE_16} fontColor={"#7B7B7B"}>
-        {format(startTime, "yyyy年MM月Do日 dddd", { locale: ja })}
-      </GeneralText>
+          <GeneralText fontSize={GeneralFontSize.SIZE_16} fontColor={"#7B7B7B"}>
+            {format(startTime, "yyyy年MM月Do日 dddd", { locale: ja })}
+          </GeneralText>
+        </div>
+      </GeneralFlex>
     </CardAtoms>
   );
 };

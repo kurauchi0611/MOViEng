@@ -61,7 +61,7 @@ type Schedule = {
 type Movie = {
   title: String;
   description: String;
-  picture: String;
+  image: String;
 };
 
 type Place = {
@@ -126,7 +126,7 @@ export default function Home() {
                 city={movie.place.city}
                 other={movie.place.other}
                 prefecture={movie.place.prefecture}
-                picture={movie.movie.picture}
+                picture={movie.movie.image}
                 title={movie.movie.title}
                 movieId={movie.id}
                 startTime={movie.startTime.toDate()}
