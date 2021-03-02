@@ -28,7 +28,7 @@ const PaymentRegistration = () => {
   const [ccv, setCCV] = useState("");
 
   const moveNagesen = () => {
-    router.push(`/my_page/${userId}/nagesen?movie=${movieId}`);
+    router.replace(`/my_page/${userId}/nagesen?movie=${movieId}`);
   }
 
   return (
