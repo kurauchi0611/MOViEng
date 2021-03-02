@@ -4,7 +4,6 @@ import { ImageAtoms } from "../atoms/ImageAtoms";
 import GeneralColorStyle from "styles/colors/GeneralColorStyle";
 import GeneralText, {
   GeneralFontSize,
-  GeneralTag,
 } from "../../styles/typography/GeneralTextStyle";
 import { format } from "date-fns";
 import ja from "date-fns/locale/ja";
@@ -67,16 +66,15 @@ const MovieCardMolecules = ({
           <GeneralText
             fontSize={GeneralFontSize.SIZE_16}
             fontColor={GeneralColorStyle.Black}
-            tag={GeneralTag.H3}
           >
             {title}
           </GeneralText>
 
-          <GeneralText fontSize={GeneralFontSize.SIZE_16} fontColor={"#7B7B7B"} tag={GeneralTag.P}>
+          <GeneralText fontSize={GeneralFontSize.SIZE_16} fontColor={"#7B7B7B"}>
             {`${prefecture}・${city} ${other}`}
           </GeneralText>
 
-          <GeneralText fontSize={GeneralFontSize.SIZE_16} fontColor={"#7B7B7B"} tag={GeneralTag.P}>
+          <GeneralText fontSize={GeneralFontSize.SIZE_16} fontColor={"#7B7B7B"}>
             {format(startTime, "yyyy年MM月Do日 dddd", { locale: ja })}
           </GeneralText>
 

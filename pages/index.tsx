@@ -113,7 +113,7 @@ export default function Home() {
       </Box>
 
       <Container className={classes.content} maxWidth="lg">
-        <GeneralText fontSize={GeneralFontSize.SIZE_16} fontColor={"#BDBDBD"} tag={GeneralTag.P}>
+        <GeneralText fontSize={GeneralFontSize.SIZE_16} fontColor={"#BDBDBD"}>
           2020年12月・2021年1月上映予定作品
         </GeneralText>
 
