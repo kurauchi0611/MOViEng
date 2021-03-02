@@ -16,7 +16,7 @@ import styled from "styled-components";
 import useMedia from "use-media";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { db } from "../../../utils/firebase/firebase";
+import { db, auth } from "../../../utils/firebase/firebase";
 import IconAtoms from "../../../components/atoms/IconAtoms";
 import { IconType } from "consts/IconConsts";
 import GeneralColorStyle from "styles/colors/GeneralColorStyle";
@@ -78,6 +78,17 @@ const Nagesen = () => {
 
     getMovie();
   }, [userId, movieId]);
+
+  const amount = async () => {
+    await db
+      .collection("stripe_customers")
+      .doc(userId)
+      .collection("charges")
+      .add({
+        amount: money,
+      });
+    setMoney(0);
+  };
 
   return (
     <>
@@ -174,7 +185,7 @@ const Nagesen = () => {
           textColor={GeneralColorStyle.White}
           btnColor={GeneralColorStyle.Green}
           width={200}
-          onClick={() => setMoney(0)}
+          onClick={amount}
         />
       </TextWrap>
     </>

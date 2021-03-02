@@ -39,6 +39,7 @@ const Login = () => {
       .then((user) => {
         // Signed in
         // ...
+        router.push("/");
       })
       .catch((error) => {
         var errorCode = error.code;
