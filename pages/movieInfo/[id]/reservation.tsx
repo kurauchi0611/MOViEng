@@ -54,27 +54,36 @@ const ReservationMovie = () => {
     <>
       {movie && (
         <>
-          <CardAtoms width={376} raised={true}>
-            <GeneralText fontSize={GeneralFontSize.SIZE_12}>作品</GeneralText>
-            <GeneralText fontSize={GeneralFontSize.SIZE_12}>
-              {movie.movie.title}
-            </GeneralText>
+          <GeneralFlex
+            direction={GeneralDirection.ROW}
+            justify={GeneralJustify.CENTER}
+            alignItems={GeneralAlignItems.CENTER}
+            style={{ marginTop: 16 }}
+          >
+            <GeneralSpacer horizontal={16} />
+            <CardAtoms width={376} raised={true}>
+              <GeneralText fontSize={GeneralFontSize.SIZE_12}>作品</GeneralText>
+              <GeneralText fontSize={GeneralFontSize.SIZE_12}>
+                {movie.movie.title}
+              </GeneralText>
 
-            <GeneralText fontSize={GeneralFontSize.SIZE_12}>日時</GeneralText>
-            <GeneralText fontSize={GeneralFontSize.SIZE_12}>
-              2020年12月19日（土）
-            </GeneralText>
-            <GeneralText fontSize={GeneralFontSize.SIZE_12}>
-              開場：17:20〜　開演：18:20〜
-            </GeneralText>
+              <GeneralText fontSize={GeneralFontSize.SIZE_12}>日時</GeneralText>
+              <GeneralText fontSize={GeneralFontSize.SIZE_12}>
+                2020年12月19日（土）
+              </GeneralText>
+              <GeneralText fontSize={GeneralFontSize.SIZE_12}>
+                開場：17:20〜　開演：18:20〜
+              </GeneralText>
 
-            <GeneralText fontSize={GeneralFontSize.SIZE_12}>会場</GeneralText>
-            <GeneralText fontSize={GeneralFontSize.SIZE_12}>
-              青森市民ホール
-              <br />
-              青森県青森市柳川１丁目２−１４
-            </GeneralText>
-          </CardAtoms>
+              <GeneralText fontSize={GeneralFontSize.SIZE_12}>会場</GeneralText>
+              <GeneralText fontSize={GeneralFontSize.SIZE_12}>
+                青森市民ホール
+                <br />
+                青森県青森市柳川１丁目２−１４
+              </GeneralText>
+            </CardAtoms>
+            <GeneralSpacer horizontal={16} />
+          </GeneralFlex>
 
           <GeneralFlex
             direction={GeneralDirection.ROW}
@@ -82,6 +91,7 @@ const ReservationMovie = () => {
             alignItems={GeneralAlignItems.CENTER}
             style={{ marginTop: 24 }}
           >
+            <GeneralSpacer horizontal={16} />
             <ButtonMolecules
               text={"予約する"}
               textColor={GeneralColorStyle.White}
@@ -89,6 +99,7 @@ const ReservationMovie = () => {
               btnColor={GeneralColorStyle.Red}
               onClick={reservation}
             />
+            <GeneralSpacer horizontal={16} />
           </GeneralFlex>
         </>
       )}
