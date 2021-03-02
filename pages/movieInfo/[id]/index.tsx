@@ -92,12 +92,8 @@ const MovieInfo = () => {
           prefecture={movie.place.prefecture}
           good={movie.good}
           wantWatch={movie.wantWatch}
-          openTime={format(movie.openTime.toDate(), "yyyy年MM月Do日 dddd", {
-            locale: ja,
-          })}
-          startTime={format(movie.startTime.toDate(), "yyyy年MM月Do日 dddd", {
-            locale: ja,
-          })}
+          openTime={movie.openTime.toDate()}
+          startTime={movie.startTime.toDate()}
         />
       )}
 
