@@ -18,6 +18,7 @@ import ButtonMolecules from "../../../components/molecules/buttons/ButtonMolecul
 import GeneralColorStyle from "styles/colors/GeneralColorStyle";
 import { GeneralSpacer } from "../../../styles/spacer/GeneralSpacerStyle";
 import firebase from "firebase";
+import { Typography } from "@material-ui/core";
 
 const ReservationMovie = () => {
   const router = useRouter();
@@ -43,7 +44,7 @@ const ReservationMovie = () => {
 
   const reservation = async () => {
     const user = auth.currentUser;
-    const userId:any =id    
+    const userId: any = id;
     await db
       .collection("users")
       .doc(user.uid)
@@ -63,6 +64,11 @@ const ReservationMovie = () => {
 
   return (
     <>
+      <div style={{ background: "#FEE101", padding: "16px" }}>
+        <Typography component="p" variant="h5">
+          予約確認
+        </Typography>
+      </div>
       {movie && (
         <>
           <GeneralFlex
