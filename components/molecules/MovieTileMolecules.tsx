@@ -4,7 +4,6 @@ import GeneralColorStyle from "styles/colors/GeneralColorStyle";
 import GeneralText, {
   GeneralFontSize,
   GeneralFontWeight,
-  GeneralTag,
 } from "styles/typography/GeneralTextStyle";
 
 const MovieTileContainer = styled.div`
@@ -23,7 +22,6 @@ const MovieTileMolecules = ({ text }: Props) => {
       <GeneralText
         fontSize={GeneralFontSize.SIZE_12}
         fontWeight={GeneralFontWeight.BOLD}
-        tag={GeneralTag.H3}
       >
         {text}
       </GeneralText>

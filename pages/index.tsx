@@ -25,7 +25,6 @@ import LogoAtoms from "../components/atoms/LogoAtoms";
 import { auth } from "../utils/firebase/firebase";
 import GeneralText, {
   GeneralFontSize,
-  GeneralTag,
 } from "../styles/typography/GeneralTextStyle";
 
 const useStyles = makeStyles((theme: Theme) =>
