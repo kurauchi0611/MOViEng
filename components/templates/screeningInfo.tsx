@@ -11,7 +11,6 @@ import {
 import GeneralText, {
   GeneralFontSize,
   GeneralFontWeight,
-  GeneralTag,
 } from "styles/typography/GeneralTextStyle";
 import useMedia from "use-media";
 import IconAtoms from "components/atoms/IconAtoms";
@@ -77,7 +76,6 @@ const ScreeningInfo = ({
         <GeneralText
           fontSize={GeneralFontSize.SIZE_20}
           fontWeight={GeneralFontWeight.BOLD}
-          tag={GeneralTag.H3}
         >
           {title}
         </GeneralText>
@@ -98,7 +96,6 @@ const ScreeningInfo = ({
             <GeneralText
               fontSize={GeneralFontSize.SIZE_14}
               fontWeight={GeneralFontWeight.BOLD}
-              tag={GeneralTag.H4}
             >
               日程
             </GeneralText>
@@ -108,7 +105,6 @@ const ScreeningInfo = ({
             <GeneralText
               fontSize={GeneralFontSize.SIZE_14}
               fontWeight={GeneralFontWeight.BOLD}
-              tag={GeneralTag.H4}
             >
               会場
             </GeneralText>
@@ -200,7 +196,6 @@ const ScreeningInfo = ({
         <GeneralText
           fontSize={GeneralFontSize.SIZE_16}
           fontWeight={GeneralFontWeight.BOLD}
-          tag={GeneralTag.H4}
         >
           あらすじ
         </GeneralText>
