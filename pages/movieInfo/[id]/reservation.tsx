@@ -43,6 +43,7 @@ const ReservationMovie = () => {
 
   const reservation = async () => {
     const user = auth.currentUser;
+    const userId:string =id    
     await db
       .collection("users")
       .doc(user.uid)
@@ -52,7 +53,7 @@ const ReservationMovie = () => {
       });
     await db
       .collection("schedule")
-      .doc(id)
+      .doc(userId)
       .set(
         { wantWatch: firebase.firestore.FieldValue.increment(1) },
         { merge: true }
