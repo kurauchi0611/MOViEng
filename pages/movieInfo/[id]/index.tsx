@@ -58,8 +58,7 @@ const MovieInfo = () => {
       await db
         .collection("schedule")
         .doc(movieId)
-        .get()
-        .then((doc) => {
+        .onSnapshot((doc) => {
           setMovie(doc.data());
           console.log(doc.data());
         });
