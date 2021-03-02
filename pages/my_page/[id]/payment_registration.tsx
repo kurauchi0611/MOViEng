@@ -30,7 +30,7 @@ const Wrap = styled.div`
 `;
 
 const CARD_OPTIONS = {
-  iconStyle: "solid",
+  // iconStyle: "solid",
   style: {
     base: {
       iconColor: "#aaa",
