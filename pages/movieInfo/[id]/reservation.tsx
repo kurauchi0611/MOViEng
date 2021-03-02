@@ -43,7 +43,7 @@ const ReservationMovie = () => {
 
   const reservation = async () => {
     const user = auth.currentUser;
-    const userId:string =id    
+    const userId:any =id    
     await db
       .collection("users")
       .doc(user.uid)
