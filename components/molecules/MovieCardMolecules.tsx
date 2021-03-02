@@ -67,6 +67,7 @@ const MovieCardMolecules = ({
           <GeneralText
             fontSize={GeneralFontSize.SIZE_16}
             fontColor={GeneralColorStyle.Black}
+            tag={GeneralTag.H3}
           >
             {title}
           </GeneralText>
