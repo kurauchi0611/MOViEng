@@ -48,6 +48,7 @@ type Movie = {
   picture: String;
 };
 
+
 export default function Home() {
   const router=useRouter()
   const classes = useStyles();
