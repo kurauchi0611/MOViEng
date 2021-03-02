@@ -1,4 +1,3 @@
-import React, { ReactNode } from "react";
 import styled from "styled-components";
 import GeneralColorStyle from "../colors/GeneralColorStyle";
 
@@ -24,43 +23,21 @@ export enum GeneralFontWeight {
   BLACK = 900,
 }
 
-export enum GeneralTag {
-  H1 = "h1",
-  H2 = "h2",
-  H3 = "h3",
-  H4 = "h4",
-  H5 = "h5",
-  H6 = "h6",
-  P = "p",
-  SMALL = "small",
-  SPAN = "span",
-}
-
 export type GeneralTextStyleProps = {
   fontSize: GeneralFontSize;
   fontColor?: string;
   fontWeight?: GeneralFontWeight;
-  tag?: GeneralTag;
-  children: ReactNode;
 };
 
-const GeneralText = ({
-  fontSize,
-  fontColor,
-  fontWeight,
-  tag = GeneralTag.P,
-  children,
-}: GeneralTextStyleProps) => {
-  const GeneralTextStyle = styled.span<GeneralTextStyleProps>`
-    font-size: ${fontSize}px;
-    line-height: ${fontSize > 20 ? 1.5 : 2};
-    color: ${fontColor || GeneralColorStyle.Black};
-    font-weight: ${fontWeight || GeneralFontWeight.NORMAL};
-  `;
+export const GeneralText = styled.p<GeneralTextStyleProps>`
+  font-size: ${(props) => props.fontSize}px;
+  line-height: ${(props) => (props.fontSize > 20 ? 1.5 : 2)};
+  color: ${(props) => props.fontColor || GeneralColorStyle.Black};
+  font-weight: ${(props) => props.fontWeight || GeneralFontWeight.NORMAL};
+`;
 
-  const GeneralTextTag = styled(GeneralTextStyle.withComponent(GeneralTag.P))``;
-
-  return <GeneralTextTag>{children}</GeneralTextTag>;
-};
+export const GeneralTextParagraph = styled(GeneralText.withComponent("p"))`
+  white-space: pre-wrap;
+`;
 
 export default GeneralText;
