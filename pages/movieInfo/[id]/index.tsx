@@ -19,6 +19,9 @@ import IconAtoms from "components/atoms/IconAtoms";
 import { IconType } from "consts/IconConsts";
 import CircleButtonMolecules from "components/molecules/buttons/CircleButtonMolecules";
 import firebase from "firebase";
+import { Box } from "@material-ui/core";
+import LogoAtoms from "components/atoms/LogoAtoms";
+import { Typography } from "@material-ui/core";
 
 const ReservationBtnWrap = styled.div`
   width: 100%;
@@ -75,13 +78,21 @@ const MovieInfo = () => {
       router.push(`/login`);
     }
   };
-  const toggleGood=()=>{
-    db
-        .collection("schedule")
-        .doc(movieId).set({good:firebase.firestore.FieldValue.increment(1)},{merge:true})
-  }
+  const toggleGood = () => {
+    db.collection("schedule")
+      .doc(movieId)
+      .set(
+        { good: firebase.firestore.FieldValue.increment(1) },
+        { merge: true }
+      );
+  };
   return (
     <>
+      <div style={{background:"#FEE101",padding:"16px",}}>
+        <Typography component="p" variant="h5">
+          上映情報
+        </Typography>
+      </div>
       {movie && (
         <ScreeningInfo
           description={movie.movie.description}
@@ -112,7 +123,7 @@ const MovieInfo = () => {
         />
         <GeneralSpacer horizontal={16} />
       </GeneralFlex>
-      <div style={{ position: "fixed",right:"16px", bottom:"96px"}}>
+      <div style={{ position: "fixed", right: "16px", bottom: "96px" }}>
         <CircleButtonMolecules
           size={48}
           btnColor={GeneralColorStyle.Yellow}
