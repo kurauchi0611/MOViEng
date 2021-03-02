@@ -14,6 +14,7 @@ import {
 import ButtonMolecules from "../../../components/molecules/buttons/ButtonMolecules";
 import GeneralColorStyle from "styles/colors/GeneralColorStyle";
 import { GeneralSpacer } from "../../../styles/spacer/GeneralSpacerStyle";
+import firebase from "firebase";
 
 const ReservationMovie = () => {
   const router = useRouter();
@@ -46,7 +47,7 @@ const ReservationMovie = () => {
       .add({
         ...movie,
       });
-
+    await db.collection("schedule").doc(id).set({wantWatch:firebase.firestore.FieldValue.increment(1)},{merge:true})
     router.push("/movieInfo/complete");
   };
 
