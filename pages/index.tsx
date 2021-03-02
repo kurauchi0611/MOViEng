@@ -25,6 +25,7 @@ import LogoAtoms from "../components/atoms/LogoAtoms";
 import { auth } from "../utils/firebase/firebase";
 import GeneralText, {
   GeneralFontSize,
+  GeneralTag,
 } from "../styles/typography/GeneralTextStyle";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -112,7 +113,7 @@ export default function Home() {
       </Box>
 
       <Container className={classes.content} maxWidth="lg">
-        <GeneralText fontSize={GeneralFontSize.SIZE_16} fontColor={"#BDBDBD"}>
+        <GeneralText fontSize={GeneralFontSize.SIZE_16} fontColor={"#BDBDBD"} tag={GeneralTag.P}>
           2020年12月・2021年1月上映予定作品
         </GeneralText>
 

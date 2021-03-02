@@ -58,7 +58,7 @@ const GeneralText = ({
     font-weight: ${fontWeight || GeneralFontWeight.NORMAL};
   `;
 
-  const GeneralTextTag = styled(GeneralTextStyle.withComponent("p"))``;
+  const GeneralTextTag = styled(GeneralTextStyle.withComponent(tag))``;
 
   return <GeneralTextTag>{children}</GeneralTextTag>;
 };
