@@ -7,7 +7,6 @@ import { IconType } from "consts/IconConsts";
 import GeneralText, {
   GeneralFontSize,
   GeneralFontWeight,
-  GeneralTag,
 } from "../styles/typography/GeneralTextStyle";
 import { useRouter } from "next/router";
 import { auth } from "../utils/firebase/firebase";
@@ -118,7 +117,6 @@ const Login = () => {
         <GeneralText
           fontSize={GeneralFontSize.SIZE_16}
           fontColor={"#4f4f4f"}
-          tag={GeneralTag.P}
           fontWeight={GeneralFontWeight.BOLD}
         >
           アカウントをお持ちでない方はこちら

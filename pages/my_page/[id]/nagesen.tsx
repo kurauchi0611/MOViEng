@@ -8,7 +8,6 @@ import GeneralText from "../../../styles/typography/GeneralTextStyle";
 import {
   GeneralFontSize,
   GeneralFontWeight,
-  GeneralTag,
 } from "../../../styles/typography/GeneralTextStyle";
 import { ImageAtoms } from "../../../components/atoms/ImageAtoms";
 import MovieTileMolecules from "../../../components/molecules/MovieTileMolecules";
@@ -100,7 +99,6 @@ const Nagesen = () => {
         <GeneralText
           fontSize={GeneralFontSize.SIZE_20}
           fontWeight={GeneralFontWeight.BOLD}
-          tag={GeneralTag.H3}
         >
           {title}
         </GeneralText>
