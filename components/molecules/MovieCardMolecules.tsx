@@ -71,11 +71,11 @@ const MovieCardMolecules = ({
             {title}
           </GeneralText>
 
-          <GeneralText fontSize={GeneralFontSize.SIZE_16} fontColor={"#7B7B7B"}>
+          <GeneralText fontSize={GeneralFontSize.SIZE_16} fontColor={"#7B7B7B"} tag={GeneralTag.P}>
             {`${prefecture}・${city} ${other}`}
           </GeneralText>
 
-          <GeneralText fontSize={GeneralFontSize.SIZE_16} fontColor={"#7B7B7B"} tag={GeneralTag.H2}>
+          <GeneralText fontSize={GeneralFontSize.SIZE_16} fontColor={"#7B7B7B"} tag={GeneralTag.P}>
             {format(startTime, "yyyy年MM月Do日 dddd", { locale: ja })}
           </GeneralText>
 
