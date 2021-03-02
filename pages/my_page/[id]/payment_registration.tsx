@@ -11,7 +11,12 @@ import {
   GeneralFlex,
   GeneralJustify,
 } from "../../../styles/flex/GeneralFlexStyle";
-import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import {
+  CardElement,
+  useStripe,
+  useElements,
+  PaymentRequestButtonElement,
+} from "@stripe/react-stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { db } from "../../../utils/firebase/firebase";
@@ -28,22 +33,24 @@ const CARD_OPTIONS = {
   iconStyle: "solid",
   style: {
     base: {
-      iconColor: "#c4f0ff",
-      color: "#fff",
+      iconColor: "#aaa",
+      color: "#666",
+      backgroundColor: "#fff",
       fontWeight: 500,
       fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
       fontSize: "16px",
       fontSmoothing: "antialiased",
+      lineHeight: "4",
       ":-webkit-autofill": {
         color: "#fce883",
       },
       "::placeholder": {
-        color: "#87bbfd",
+        color: "#aaa",
       },
     },
     invalid: {
       iconColor: "#ffc7ee",
-      color: "#ffc7ee",
+      color: "#aaa",
     },
   },
 };
@@ -92,12 +99,14 @@ const CheckoutForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <CardElement />
-      <button type="submit" disabled={!stripe}>
-        Pay
-      </button>
-    </form>
+    <div style={{padding:"16px",}}>
+      <form onSubmit={handleSubmit}>
+        <CardElement options={CARD_OPTIONS} />
+        <button type="submit" disabled={!stripe} style={{width:"100%",fontSize:"20px", padding:"8px",borderRadius:"40px",border:"solid 1px #666"}}>
+          登録
+        </button>
+      </form>
+    </div>
   );
 };
 
