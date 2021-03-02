@@ -2,7 +2,7 @@ import React from "react";
 import ScreeningInfo from "components/templates/screeningInfo";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { db } from "../../../utils/firebase/firebase";
+import { db, auth } from "../../../utils/firebase/firebase";
 import ja from "date-fns/locale/ja";
 import { format } from "date-fns";
 import ButtonMolecules from "../../../components/molecules/buttons/ButtonMolecules";
@@ -14,6 +14,11 @@ import {
   GeneralJustify,
   GeneralAlignItems,
 } from "../../../styles/flex/GeneralFlexStyle";
+import { GeneralSpacer } from "../../../styles/spacer/GeneralSpacerStyle";
+import IconAtoms from "components/atoms/IconAtoms";
+import { IconType } from "consts/IconConsts";
+import CircleButtonMolecules from "components/molecules/buttons/CircleButtonMolecules";
+import firebase from "firebase";
 
 const ReservationBtnWrap = styled.div`
   width: 100%;
@@ -53,8 +58,7 @@ const MovieInfo = () => {
       await db
         .collection("schedule")
         .doc(movieId)
-        .get()
-        .then((doc) => {
+        .onSnapshot((doc) => {
           setMovie(doc.data());
           console.log(doc.data());
         });
@@ -63,9 +67,19 @@ const MovieInfo = () => {
   }, [movieId]);
 
   const moveReservation = () => {
-    router.push(`/movieInfo/${id}/reservation`);
+    const user = auth.currentUser;
+    console.log(user);
+    if (user) {
+      router.push(`/movieInfo/${id}/reservation`);
+    } else {
+      router.push(`/login`);
+    }
   };
-
+  const toggleGood=()=>{
+    db
+        .collection("schedule")
+        .doc(movieId).set({good:firebase.firestore.FieldValue.increment(1)},{merge:true})
+  }
   return (
     <>
       {movie && (
@@ -88,6 +102,7 @@ const MovieInfo = () => {
         justify={GeneralJustify.CENTER}
         alignItems={GeneralAlignItems.CENTER}
       >
+        <GeneralSpacer horizontal={16} />
         <ButtonMolecules
           text={"予約する"}
           textColor={GeneralColorStyle.White}
@@ -95,7 +110,17 @@ const MovieInfo = () => {
           btnColor={GeneralColorStyle.Red}
           onClick={moveReservation}
         />
+        <GeneralSpacer horizontal={16} />
       </GeneralFlex>
+      <div style={{ position: "fixed",right:"16px", bottom:"96px"}}>
+        <CircleButtonMolecules
+          size={48}
+          btnColor={GeneralColorStyle.Yellow}
+          iconColor={GeneralColorStyle.Red}
+          iconType={IconType.HEART}
+          onClick={toggleGood}
+        />
+      </div>
     </>
   );
 };
