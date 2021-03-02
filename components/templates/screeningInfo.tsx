@@ -16,6 +16,8 @@ import useMedia from "use-media";
 import IconAtoms from "components/atoms/IconAtoms";
 import { IconType } from "consts/IconConsts";
 import GeneralColorStyle from "styles/colors/GeneralColorStyle";
+import { format } from "date-fns";
+import ja from "date-fns/locale/ja";
 
 const ScreeningInfoContainer = styled(GeneralFlex)`
   width: 100vw;
@@ -48,8 +50,8 @@ export type Props = {
   prefecture: string;
   good: number;
   wantWatch: number;
-  openTime: string;
-  startTime: string;
+  openTime: number | Date;
+  startTime: number | Date;
 };
 
 const ScreeningInfo = ({
@@ -99,9 +101,19 @@ const ScreeningInfo = ({
             >
               日程
             </GeneralText>
-            <MovieTileMolecules text={"2020年12月19日（土）"} />
-            <MovieTileMolecules text={openTime} />
-            <MovieTileMolecules text={startTime} />
+            <MovieTileMolecules text={format(openTime, "yyyy年MM月Do日（E）", {
+                locale: ja,
+              })} />
+            <MovieTileMolecules
+              text={format(openTime, "・開場：HH:mm ~", {
+                locale: ja,
+              })}
+            />
+            <MovieTileMolecules
+              text={format(startTime, "・開演：HH:mm ~", {
+                locale: ja,
+              })}
+            />
             <GeneralText
               fontSize={GeneralFontSize.SIZE_14}
               fontWeight={GeneralFontWeight.BOLD}
