@@ -4,7 +4,7 @@ import GeneralColorStyle from "styles/colors/GeneralColorStyle";
 import styled from "styled-components";
 import { useState, ChangeEvent } from "react";
 import { GeneralSpacer } from "../../../styles/spacer/GeneralSpacerStyle";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 import {
   GeneralAlignItems,
   GeneralDirection,
@@ -19,9 +19,9 @@ const Wrap = styled.div`
 `;
 
 const PaymentRegistration = () => {
-  const router = useRouter()
+  const router = useRouter();
   const userId = router.query.id as string;
-  const movieId = router.query.movie
+  const movieId = router.query.movie;
 
   const [cardNumber, setCardNumber] = useState("");
   const [expirationDate, setExpirationDate] = useState("");
@@ -29,7 +29,7 @@ const PaymentRegistration = () => {
 
   const moveNagesen = () => {
     router.replace(`/my_page/${userId}/nagesen?movie=${movieId}`);
-  }
+  };
 
   return (
     <GeneralFlex
@@ -87,6 +87,7 @@ const PaymentRegistration = () => {
           btnColor={GeneralColorStyle.Green}
           width={360}
           onClick={moveNagesen}
+          disabled={!cardNumber || !expirationDate || !ccv}
         />
       </div>
     </GeneralFlex>
