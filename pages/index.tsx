@@ -95,6 +95,7 @@ export default function Home() {
       let getMovies = [];
       await db
         .collection("schedule")
+        .orderBy("startTime","desc")
         .get()
         .then((querySnapshot) => {
           querySnapshot.forEach(async (doc) => {
@@ -203,7 +204,7 @@ export default function Home() {
           </>
         )}
         <GeneralText fontSize={GeneralFontSize.SIZE_16} fontColor={"#BDBDBD"}>
-          2020年12月・2021年1月上映予定作品
+          2020年12月・2021年上映予定作品
         </GeneralText>
 
         <hr style={{ margin: 0 }} />
