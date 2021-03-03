@@ -1,1 +1,0 @@
-export const tmdbKey="40ff9a0a28ffd17210c1df57fc838e0e"
