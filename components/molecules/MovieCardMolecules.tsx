@@ -75,7 +75,7 @@ const MovieCardMolecules = ({
           </GeneralText>
 
           <GeneralText fontSize={GeneralFontSize.SIZE_16} fontColor={"#7B7B7B"}>
-            {format(startTime, "yyyy年MM月Do日 HH時mm分", { locale: ja })}
+            {format(startTime, "yyyy年MM月dd日 HH時mm分", { locale: ja })}
           </GeneralText>
 
           <GeneralFlex direction={GeneralDirection.ROW}>

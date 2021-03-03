@@ -45,12 +45,14 @@ const ReservationMovie = () => {
   const reservation = async () => {
     const user = auth.currentUser;
     const userId: any = id;
+    
     await db
       .collection("users")
       .doc(user.uid)
       .collection("reservation")
       .add({
         ...movie,
+        uid:userId
       });
     await db
       .collection("schedule")

@@ -101,7 +101,7 @@ const ScreeningInfo = ({
             >
               日程
             </GeneralText>
-            <MovieTileMolecules text={format(openTime, "yyyy年MM月Do日（E）", {
+            <MovieTileMolecules text={format(openTime, "yyyy年MM月dd日（E）", {
                 locale: ja,
               })} />
             <MovieTileMolecules
